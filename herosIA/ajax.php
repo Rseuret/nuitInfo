@@ -2,35 +2,26 @@
 <html>
 <body>
 
-<h1>The XMLHttpRequest Object</h1>
-
-<button type="button" onclick="loadDoc()">Dis moi une blague</button>
+<h1>Welcome. How can I help you?</h1>
+<input id="question" name="question" type="text" />
+<button id="envoi" type="button">Ask</button>
 <br><br>
 <div id="demo"></div>
+</body>
 
+<script src="traitement_demande.js"> </script>
 <script>
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      myFunction(this);
+  document.getElementById('envoi').addEventListener('click', function() {
+    switch(document.getElementById('question').value){
+      case 'joke':
+        loadDoc('blagues.xml', tellJoke);
+        break;
+      case 'present you':
+        loadDoc('presentation.xml', present);
+        break;
     }
-  };
-  xhttp.open("GET", "blagues.xml", true);
-  xhttp.send();
-}
-function myFunction(xml) {
-  var xmlDoc = xml.responseXML;
-  var joke = "";
-  var x = xmlDoc.getElementsByTagName("JOKE");
-  for(var i = 0; i < x.length; i++){
-    joke += x[i].getElementsByTagName("SUBJECT")[0].childNodes[0].nodeValue;
-    joke += ": " + x[i].getElementsByTagName("TEXT")[0].childNodes[0].nodeValue;
-    joke += "</br>";
-  }
-  document.getElementById("demo").innerHTML = joke;
-}
+
+  }, false);
 </script>
 
-</body>
 </html>
