@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BLAGUES>
+  <JOKE>
+    <SUBJECT>Cat</SUBJECT>
+    <TEXT>The cat is dead OMG.</TEXT>
+    <BITCH>Just kidding.</BITCH>
+  </JOKE>
+  <JOKE>
+    <SUBJECT>Dog</SUBJECT>
+    <TEXT>The dog is alive OMFG.</TEXT>
+    <BITCH>Just kidding 2.</BITCH>
+  </JOKE>
+</BLAGUES>
