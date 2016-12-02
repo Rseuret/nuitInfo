@@ -29,5 +29,6 @@ function present (xml) {
   var i = Math.floor(Math.random() * x.length);
   text += x[i].getElementsByTagName("TEXT")[0].childNodes[0].nodeValue;
   text += "</br>";
+  text += '<img src="mm_bonjour.jpg" width="200" height="250">';
   document.getElementById("demo").innerHTML = "<div>" + text + "</div><div> Moi: " + document.getElementById('question').value + historique + "</div>";
 }
