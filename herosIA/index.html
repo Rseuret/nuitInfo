@@ -1,102 +1,57 @@
-<!DOCTYPE>
-<HTML>
+<!DOCTYPE html>
+<html class="full" lang="en">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+
 <head>
-  <title>bla</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Theresa</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/the-big-picture.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+
 </head>
-  <BODY>
 
-  <p><input id="search" name="search" type="text"/></p>
-  <p><input id="number" name="number" type="number" min="0"/></p>
-  <p id="completion"></textarea></p>
-  <p><textarea id="result" style="width:350px; height:150px"></textarea></p>
-  <p><button type="button" id="button" onclick="startFetch()">
-    Fetch Wikipedia extract</button></p>
+<body>
 
-  <script type="text/javascript">
-    document.getElementById('number').value = "5";
-    var textbox = document.getElementById("result");
-    textbox.value = "";
-    var button = document.getElementById("button");
-    var tempscript = null, attempts;
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Bonjour, je suis Théresa...</h1>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12" id="discussion">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="bulle">
+                  <p>Je coucou mon chou....</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="reponse_box">
+            <input id="potin" autofocus="true" />
+          </div>
+        </div>
+      </div>
+    </div>
 
-    function startFetch(isRetry) {
-      if (tempscript) return; // a fetch is already in progress
-      if (!isRetry) {
-        attempts = 0;
-        button.disabled = true;
-        button.style.cursor = "wait";
-      }
-      tempscript = document.createElement("script");
-      tempscript.type = "text/javascript";
-      tempscript.id = "tempscript";
-      tempscript.src = "http://en.wikipedia.org/w/api.php"
-        + "?action=query&titles=" + search.value + "&prop=extracts"
-        + "&exsentences=" + number.value + "&format=json&callback=onFetchComplete";
-      document.body.appendChild(tempscript);
-      // onFetchComplete invoked when finished
-    }
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/theresa.js"></script>
 
-    function onFetchComplete(data) {
-      document.body.removeChild(tempscript);
-      tempscript = null
-      var s = getFirstProp(data.query.pages).extract;
-      s = htmlDecode(stripTags(s));
+</body>
 
-        textbox.value = s;
-        button.disabled = false;
-        button.style.cursor = "auto";
-
-    }
-
-    function getFirstProp(obj) {
-      for (var i in obj) return obj[i];
-    }
-
-    // This next bit borrowed from Prototype / hacked together
-    // You may want to replace with something more robust
-    function stripTags(s) {
-      return s.replace(/<\w+(\s+("[^"]*"|'[^']*'|[^>])+)?>|<\/\w+>/gi, "");
-    }
-    function htmlDecode(input){
-      var e = document.createElement("div");
-      e.innerHTML = input;
-      return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-    }
-  </script>
-
-  <script>
-    /* this function handles the data */
-    function myAmazingFunction(data) {
-      var doc = document.getElementById('completion');
-      doc.innerHTML = "";
-      for (var i = 0; i < data[1].length; i++) {
-        doc.innerHTML += "<p>";
-        doc.innerHTML += "<a href='"+data[3][i]+"' target='_blank'>"+data[1][i]+"</a> : ";
-        doc.innerHTML += data[2][i]+"</p>";
-      }
-    }
-
-    /* this variable will hold the script tag with your desired data */
-    var myScript = '';
-
-    /* this section handles what happens after a key is pressed inside your input text box */
-    function bitch() {
-
-    /* this variable stores whatever is in the input text box */
-    var stuff_in_text_box = document.getElementById('search').value;
-
-    /* this is the script that will hold the data we're trying to get */
-    myScript = document.createElement('script');
-
-    /* this sets the src of the script equal to the url of the data */
-    myScript.src = 'http://en.wikipedia.org/w/api.php?action=opensearch&limit='+document.getElementById('number').value+'&format=json&callback=myAmazingFunction&search='+stuff_in_text_box;
-
-    /* this attaches the script to the body of the page */
-    document.body.appendChild(myScript);
-    }
-
-    document.getElementById('search').onkeyup = bitch;
-    document.getElementById('number').onchange = bitch;
-  </script>
-
-</BODY></HTML>
+</html>

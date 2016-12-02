@@ -20,7 +20,7 @@ body {
 
 #discussion {
 	height: 490px;
-	background: url(../img/bonjour.jpg);
+	background: url(../img/bonjour.jpg) no-repeat center;
 }
 
 h1 {
@@ -28,6 +28,7 @@ h1 {
 	font-size: 60px;
 	margin-bottom: 20px;
 	font-family: 'Berkshire Swash', cursive;
+	text-align: center;
 }
 
 #bulle {
@@ -36,16 +37,15 @@ h1 {
 	background-size: contain;
 	background-position: center;
 	height: 250px;
-	margin-left: 450px;
+	margin-left: 500px;
 	margin-top: 50px;
 	text-align: center;
-	padding: 25px 230px 60px 230px;
+	padding: 25px 180px 60px 180px;
 	line-height: 200px;
 }
 
 #bulle p {
 	display: inline-block;
-	word-break: break-all;
 	word-wrap: break-word;
 	font-size: 20px;
   line-height: normal;
