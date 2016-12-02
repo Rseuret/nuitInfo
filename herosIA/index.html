@@ -5,22 +5,22 @@
 </head>
   <BODY>
 
+  <p><input id="search" name="search" type="text" /></p>
   <p><textarea id="textbox" style="width:350px; height:150px"></textarea></p>
-  <p><button type="button" id="button" onclick="startFetch(100, 500)">
+  <p><button type="button" id="button" onclick="startFetch()">
     Fetch Wikipedia extract</button></p>
 
   <script type="text/javascript">
 
     var textbox = document.getElementById("textbox");
+    textbox.value = "";
     var button = document.getElementById("button");
-    var tempscript = null, minchars, maxchars, attempts;
+    var tempscript = null, attempts;
 
-    function startFetch(minimumCharacters, maximumCharacters, isRetry) {
+    function startFetch(isRetry) {
       if (tempscript) return; // a fetch is already in progress
       if (!isRetry) {
         attempts = 0;
-        minchars = minimumCharacters; // save params in case retry needed
-        maxchars = maximumCharacters;
         button.disabled = true;
         button.style.cursor = "wait";
       }
@@ -28,7 +28,7 @@
       tempscript.type = "text/javascript";
       tempscript.id = "tempscript";
       tempscript.src = "http://en.wikipedia.org/w/api.php"
-        + "?action=query&titles=San_Francisco&prop=extracts"
+        + "?action=query&titles=" + search.value + "&prop=extracts"
         + "&exsentences=3"+"&format=json&callback=onFetchComplete";
       document.body.appendChild(tempscript);
       // onFetchComplete invoked when finished
@@ -39,13 +39,11 @@
       tempscript = null
       var s = getFirstProp(data.query.pages).extract;
       s = htmlDecode(stripTags(s));
-      if (s.length > minchars || attempts++ > 5) {
+
         textbox.value = s;
         button.disabled = false;
         button.style.cursor = "auto";
-      } else {
-        startFetch(0, 0, true); // retry
-      }
+      
     }
 
     function getFirstProp(obj) {
