@@ -1,0 +1,73 @@
+/*!
+ * Start Bootstrap - The Big Picture (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background: none;
+}
+
+.full {
+  background: url(../img/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#discussion {
+	height: 490px;
+	background: url(../img/bonjour.jpg);
+}
+
+h1 {
+	color: hotpink;
+	font-size: 60px;
+	margin-bottom: 20px;
+	font-family: 'Berkshire Swash', cursive;
+}
+
+#bulle {
+	background-image: url(../img/bulle.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	height: 250px;
+	margin-left: 450px;
+	margin-top: 50px;
+	text-align: center;
+	padding: 25px 230px 60px 230px;
+	line-height: 200px;
+}
+
+#bulle p {
+	display: inline-block;
+	word-break: break-all;
+	word-wrap: break-word;
+	font-size: 20px;
+  line-height: normal;
+	overflow: hidden;
+	max-height: 146px;
+	font-family: "Berkshire Swash", cursive
+}
+
+#reponse_box {
+	padding: 45px;
+	padding-top: 60px;
+}
+
+#potin {
+	width: 100%;
+	height: 60px;
+	font-size: 28px;
+	background-color: hsla(360, 100%, 100%, 0.5);
+	border: none;
+	outline: none;
+	padding: 10px;
+	text-align: center;
+	color: black;
+	font-family: 'Patrick Hand', cursive;
+}
