@@ -11,21 +11,23 @@ function loadDoc(xml, myFunction) {
 
 function tellJoke(xml) {
   var xmlDoc = xml.responseXML;
-  var joke = "";
+  var historique = document.getElementById("demo").innerHTML;
+  var joke = "Thérésa: ";
   var x = xmlDoc.getElementsByTagName("JOKE");
   var i = Math.floor(Math.random() * x.length);
-  joke += x[i].getElementsByTagName("SUBJECT")[0].childNodes[0].nodeValue;
-  joke += ": " + x[i].getElementsByTagName("TEXT")[0].childNodes[0].nodeValue;
+  joke += x[i].getElementsByTagName("TEXT")[0].childNodes[0].nodeValue;
   joke += "</br>";
-  document.getElementById("demo").innerHTML = joke;
+  joke += '<img src="mm_joke1.jpg" width="200" height="250">';
+  document.getElementById("demo").innerHTML = "<div>" + joke + "</div><div> Moi: " + document.getElementById('question').value + historique + "</div>";
 }
 
 function present (xml) {
   var xmlDoc = xml.responseXML;
-  var text = "";
+  var historique = document.getElementById("demo").innerHTML;
+  var text = "Thérésa: ";
   var x = xmlDoc.getElementsByTagName("GREETING");
   var i = Math.floor(Math.random() * x.length);
   text += x[i].getElementsByTagName("TEXT")[0].childNodes[0].nodeValue;
   text += "</br>";
-  document.getElementById("demo").innerHTML = text;
+  document.getElementById("demo").innerHTML = "<div>" + text + "</div><div> Moi: " + document.getElementById('question').value + historique + "</div>";
 }

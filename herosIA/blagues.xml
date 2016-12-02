@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BLAGUES>
   <JOKE>
-    <SUBJECT>Cat</SUBJECT>
-    <TEXT>The cat is dead OMG.</TEXT>
-    <BITCH>Just kidding.</BITCH>
+    <TEXT>Quelle est la différence entre Windows 95 et un virus ? Le virus il fonctionne sans aide!</TEXT>
   </JOKE>
   <JOKE>
-    <SUBJECT>Dog</SUBJECT>
-    <TEXT>The dog is alive OMFG.</TEXT>
-    <BITCH>Just kidding 2.</BITCH>
+    <TEXT>Si microsoft inventait quelque chose qui ne plante pas ce serait un clou...</TEXT>
+  </JOKE>
+  <JOKE>
+    <TEXT>Comment un informaticien tente-t-il de réparer sa voiture lorsqu'elle a un problème?
+    Il sort de la voiture, ferme toutes les fenêtres, retourne dans la voiture, et essaie de redémarrer. </TEXT>
+  </JOKE>
+  <JOKE>
+    <TEXT>est L'ordre pour critique UDP. faire bonne blague une.</TEXT>
+  </JOKE>
+  <JOKE>
+    <TEXT>C'est une requête SQL qui entre dans un bar, et le serveur répond : « Il n'y a plus de tables ! ».</TEXT>
   </JOKE>
 </BLAGUES>
