@@ -5,14 +5,16 @@
 </head>
   <BODY>
 
-  <p><input id="search" name="search" type="text" /></p>
-  <p><textarea id="textbox" style="width:350px; height:150px"></textarea></p>
+  <p><input id="search" name="search" type="text"/></p>
+  <p><input id="number" name="number" type="number" min="0"/></p>
+  <p id="completion"></textarea></p>
+  <p><textarea id="result" style="width:350px; height:150px"></textarea></p>
   <p><button type="button" id="button" onclick="startFetch()">
     Fetch Wikipedia extract</button></p>
 
   <script type="text/javascript">
-
-    var textbox = document.getElementById("textbox");
+    document.getElementById('number').value = "5";
+    var textbox = document.getElementById("result");
     textbox.value = "";
     var button = document.getElementById("button");
     var tempscript = null, attempts;
@@ -29,7 +31,7 @@
       tempscript.id = "tempscript";
       tempscript.src = "http://en.wikipedia.org/w/api.php"
         + "?action=query&titles=" + search.value + "&prop=extracts"
-        + "&exsentences=3"+"&format=json&callback=onFetchComplete";
+        + "&exsentences=" + number.value + "&format=json&callback=onFetchComplete";
       document.body.appendChild(tempscript);
       // onFetchComplete invoked when finished
     }
@@ -43,7 +45,7 @@
         textbox.value = s;
         button.disabled = false;
         button.style.cursor = "auto";
-      
+
     }
 
     function getFirstProp(obj) {
@@ -60,7 +62,41 @@
       e.innerHTML = input;
       return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
     }
+  </script>
 
+  <script>
+    /* this function handles the data */
+    function myAmazingFunction(data) {
+      var doc = document.getElementById('completion');
+      doc.innerHTML = "";
+      for (var i = 0; i < data[1].length; i++) {
+        doc.innerHTML += "<p>";
+        doc.innerHTML += "<a href='"+data[3][i]+"' target='_blank'>"+data[1][i]+"</a> : ";
+        doc.innerHTML += data[2][i]+"</p>";
+      }
+    }
+
+    /* this variable will hold the script tag with your desired data */
+    var myScript = '';
+
+    /* this section handles what happens after a key is pressed inside your input text box */
+    function bitch() {
+
+    /* this variable stores whatever is in the input text box */
+    var stuff_in_text_box = document.getElementById('search').value;
+
+    /* this is the script that will hold the data we're trying to get */
+    myScript = document.createElement('script');
+
+    /* this sets the src of the script equal to the url of the data */
+    myScript.src = 'http://en.wikipedia.org/w/api.php?action=opensearch&limit='+document.getElementById('number').value+'&format=json&callback=myAmazingFunction&search='+stuff_in_text_box;
+
+    /* this attaches the script to the body of the page */
+    document.body.appendChild(myScript);
+    }
+
+    document.getElementById('search').onkeyup = bitch;
+    document.getElementById('number').onchange = bitch;
   </script>
 
 </BODY></HTML>
